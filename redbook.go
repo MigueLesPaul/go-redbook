@@ -6,9 +6,9 @@ import (
 )
 
 func main(){
-	test_path := "/data/data/com.termux/files/home/storage/shared/Obsidian/Journal/2025-11-19.md"
+	test_path := "/data/data/com.termux/files/home/storage/shared/Obsidian/Journal"
 
-fmt.Println(obf.ReadFrontMatter(test_path))
+fmt.Println(obf.LoadFrontMattersFromDir(test_path))
 
 
 }
