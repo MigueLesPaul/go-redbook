@@ -1,4 +1,4 @@
-package obsidian_frontmatter
+package obsidianfrontmatter
 
 import (
 	"bufio"
