@@ -2,6 +2,7 @@ package frontmatterstats
 
 import (
 	fmt "fmt"
+	"time"
 )
 
 // Fieldfilters for second level maps filters
@@ -16,7 +17,19 @@ func GetVariableNdayValues(frontmatterList []map[string]interface{}, variable st
 	// Asumes the list of Daily maps are sorted cronologically
 	var balances []float64
 	fmt.Println(ndays)
+	nDate := time.Now().AddDate(0, 0, -ndays)
+
 	for _, dailyf := range frontmatterList {
+
+		if dailyf["created"] != nil {
+			dailyfDate := dailyf["created"].(time.Time)
+			if nDate.After(dailyfDate) {
+				continue
+			}
+		} else {
+			continue
+		}
+
 		if dailyf[variable] != nil {
 			switch v := dailyf[variable].(type) {
 			case int:
@@ -50,6 +63,7 @@ func GetVariableNdayValues(frontmatterList []map[string]interface{}, variable st
 
 					}
 				}
+				fmt.Println(dailyf["created"], balanceHoy)
 				balances = append(balances, balanceHoy)
 			}
 		}

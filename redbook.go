@@ -29,6 +29,15 @@ func main() {
 	total, error = fmtstats.GetVariableNdayTotal(dailyBalances)
 
 	fmt.Printf("Total de '%s'\n", variable)
+	fmt.Println(dailyBalances)
+	fmt.Println(total)
+
+	variable = "bike"
+	filter = fmtstats.Fieldfilters{}
+	dailyBalances, error = fmtstats.GetVariableNdayValues(dailyNotes, variable, 30, filter)
+	total, error = fmtstats.GetVariableNdayTotal(dailyBalances)
+
+	fmt.Printf("Total de '%s'\n", variable)
 	// fmt.Println(dailyBalances)
 	fmt.Println(total)
 }
