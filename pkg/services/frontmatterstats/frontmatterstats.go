@@ -12,12 +12,26 @@ func GetVariableNdayValues(frontmatterList []map[string]interface{}, variable st
 	fmt.Println(ndays)
 	for _, dailyf := range frontmatterList {
 		if dailyf[variable] != nil {
-			// fmt.Printf("d %d: %d\n",i,     dailyf[variable])
+			fmt.Printf(": %d\n",     dailyf[variable])
 			switch v := dailyf[variable].(type) {
 			case int:
 				balances = append(balances, float32(v))
-			case map[string]float32:
-				balances = append(balances, v["value"])
+			case map[string]interface{}:
+				var balanceHoy float32 = 0.0
+				for _,sp := range v{
+          //balanceHoy+=sp["value"].(float32)
+					m, ok := sp.(map[string]interface{})
+						if ok {
+    					if val, ok := m["value"].(float32); ok {
+        				balanceHoy += val
+    					}
+							if val, ok := m["amount"].(float32); ok {
+								balanceHoy+= val
+							}
+
+						}
+				}
+				balances = append(balances, balanceHoy)
 			}
 		}
 	}
