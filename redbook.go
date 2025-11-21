@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	 test_path := "/data/data/com.termux/files/home/storage/shared/Obsidian/Journal"
-	//	test_path := "/home/miguel/Documents/Obsidian/Journal"
+	// test_path := "/data/data/com.termux/files/home/storage/shared/Obsidian/Journal"
+	test_path := "/home/miguel/Documents/Obsidian/Journal"
 	dailyNotes, error := obf.LoadFrontMattersFromDir(test_path)
 	variable := "mood"
 	dailyBalances, error := fmtstats.GetVariableNdayValues(dailyNotes, variable, 30)
@@ -27,11 +27,7 @@ func main() {
 	dailyBalances, error = fmtstats.GetVariableNdayValues(dailyNotes, variable, 30)
 	total, error = fmtstats.GetVariableNdayTotal(dailyBalances)
 
-
 	fmt.Printf("Total de '%s'\n", variable)
 	fmt.Println(dailyBalances)
 	fmt.Println(total)
-
-
-
 }
