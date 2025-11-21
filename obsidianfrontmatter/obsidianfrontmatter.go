@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"errors"
 	"io/fs"
+	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -42,6 +43,7 @@ func ReadFrontMatter(path string) (map[string]interface{}, error) {
 		}
 	}
 	if err := scanner.Err(); err != nil {
+		log.Fatalf("Error Leyendo archivo %v", err)
 		return nil, err
 	}
 

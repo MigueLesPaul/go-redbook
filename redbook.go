@@ -3,14 +3,20 @@ package main
 import (
 	fmt "fmt"
 
+	"redbook/internal/config"
 	obf "redbook/obsidianfrontmatter"
 	fmtstats "redbook/pkg/services/frontmatterstats"
 )
 
 func main() {
 	// test_path := "/data/data/com.termux/files/home/storage/shared/Obsidian/Journal"
-	test_path := "/home/miguel/Documents/Obsidian/Journal"
-	dailyNotes, error := obf.LoadFrontMattersFromDir(test_path)
+	// test_path := "/home/miguel/Documents/Obsidian/Journal"
+
+	configuracion := config.LoadConfig()
+
+	NotesDir := configuracion["dirpath"].(string)
+	dailyNotes, error := obf.LoadFrontMattersFromDir(NotesDir)
+
 	variable := "mood"
 	filter := fmtstats.Fieldfilters{}
 	dailyBalances, error := fmtstats.GetVariableNdayValues(dailyNotes, variable, 30, filter)
