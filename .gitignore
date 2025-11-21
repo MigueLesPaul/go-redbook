@@ -1,3 +1,4 @@
 *.sum
 redbook
 *.exe
+config.yaml
