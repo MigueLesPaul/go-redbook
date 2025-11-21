@@ -1,7 +1,6 @@
 package frontmatterstats
 
 import (
-	fmt "fmt"
 	"time"
 )
 
@@ -16,7 +15,7 @@ func GetVariableNdayValues(frontmatterList []map[string]interface{}, variable st
 	// The variables have to be of object(map) type in the yaml
 	// Asumes the list of Daily maps are sorted cronologically
 	var balances []float64
-	fmt.Println(ndays)
+	// fmt.Println(ndays)
 	nDate := time.Now().AddDate(0, 0, -ndays)
 
 	for _, dailyf := range frontmatterList {
@@ -63,7 +62,7 @@ func GetVariableNdayValues(frontmatterList []map[string]interface{}, variable st
 
 					}
 				}
-				fmt.Println(dailyf["created"], balanceHoy)
+				// fmt.Println(dailyf["created"], balanceHoy)
 				balances = append(balances, balanceHoy)
 			}
 		}

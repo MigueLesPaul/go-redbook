@@ -35,7 +35,7 @@ func main() {
 	total, error = fmtstats.GetVariableNdayTotal(dailyBalances)
 
 	fmt.Printf("Total de '%s'\n", variable)
-	fmt.Println(dailyBalances)
+	// fmt.Println(dailyBalances)
 	fmt.Println(total)
 
 	variable = "bike"
