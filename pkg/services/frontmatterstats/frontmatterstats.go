@@ -78,3 +78,13 @@ func GetVariableNdayTotal(list []float64) (float64, error) {
 	}
 	return sum, nil
 }
+
+func RemoveValue(slice []float64, value float64) []float64 {
+	for i, v := range slice {
+		if v == value {
+			return append(slice[:i], slice[i+1:]...)
+		}
+	}
+	// Return original slice if value not found
+	return slice
+}
